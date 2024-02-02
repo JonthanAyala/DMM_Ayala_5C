@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JavaScript en HTML</title>
+</head>
+<body>
+
+  <h1 id="titulo">Hola Mundo</h1>
+
+  <button onclick="cambiarTexto()">Cambiar Texto</button>
+
+  <script>
+    function cambiarTexto() {
+      var elemento = document.getElementById("titulo");
+      elemento.innerHTML = "¡Texto cambiado!";
+    }
+  </script>
+
+</body>
+</html>

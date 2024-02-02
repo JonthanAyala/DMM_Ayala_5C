@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Battleship</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            display: flex;
+            max-width: 1080px;
+            max-height: 1000px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            justify-content: space-between;
+        }
+
+        #ganar {
+            display: none;
+        }
+
+        .containerWin {
+            display: flex;
+            max-width: 1080px;
+            max-height: 1000px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            justify-content: space-between;
+        }
+
+        .colunma {
+            display: flex;
+            width: 100%;
+            flex-wrap: wrap;
+        }
+
+        .plaza {
+            border: 2px solid black;
+            width: 200px;
+            height: 200px;
+            margin: 5px;
+        }
+
+        .plaza button {
+            width: 200px;
+            height: 200px;
+        }
+
+        .Won {
+            display: flex;
+            margin: 5px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div>
+            <h1>Battleship</h1>
+            <p>Realizado por Jonathan Ayala y Emmanuel Santos</p>
+        </div>
+    </header>
+    <div class="container">
+        <div class="colunma">
+
+            <div class="plaza">
+                <button style="align-items: center;" onclick="validarCampo(1)">
+                    <img src="https://static.vecteezy.com/system/resources/thumbnails/000/491/895/small/military-ship-1.jpg"
+                        style="width: 100%;" id="1">
+                </button>
+            </div>
+            <div class="plaza">
+                <button style="align-items: center;" onclick="validarCampo(2)">
+                    <img src="https://static.vecteezy.com/system/resources/thumbnails/000/491/895/small/military-ship-1.jpg"
+                        style="width: 100%;" id="2">
+                </button>
+            </div>
+            <div class="plaza">
+                <button style="align-items: center;" onclick="validarCampo(3)">
+                    <img src="https://static.vecteezy.com/system/resources/thumbnails/000/491/895/small/military-ship-1.jpg"
+                        style="width: 100%;" id="3">
+                </button>
+            </div>
+            <div class="plaza">
+                <button style="align-items: center;" onclick="validarCampo(4)">
+                    <img src="https://static.vecteezy.com/system/resources/thumbnails/000/491/895/small/military-ship-1.jpg"
+                        style="width: 100%;" id="4">
+                </button>
+            </div>
+            <div class="plaza">
+                <button style="align-items: center;" onclick="validarCampo(5)">
+                    <img src="https://static.vecteezy.com/system/resources/thumbnails/000/491/895/small/military-ship-1.jpg"
+                        style="width: 100%;" id="5">
+                </button>
+            </div>
+
+
+        </div>
+    </div>
+    <div id="ganar">
+        <div class="containerWin">
+            <div class="Won">
+                <h1>Ganaste</h1>
+            </div>
+        </div>
+    </div>
+    <script>
+        let barcosID = [];
+
+        let ids = [1, 2, 3, 4, 5];
+        document.addEventListener("DOMContentLoaded", function () {
+            for (var i = 0; i < 5; i++) {
+
+                while (barcosID[0] == null) {
+                    let arreglo = [];
+                    for (var b = 0; b < 5; b++) { arreglo[b] = Math.floor(Math.random() * (25 - 1) + 1); }
+                    var j = 0;
+                    for (var b = 0; b < 5; b++) {
+                        for (var z = 0; z < 5; z++) {
+                            if (b != z) {
+                                if (arreglo[b] == arreglo[z]) {
+                                    j = 1;
+                                }
+                            }
+                        }
+                    }
+                    console.log(j)
+                    if (j == 0) {
+                        for (var b = 0; b < 5; b++)barcosID[b] = arreglo[b];
+                        console.log(barcosID)
+                    } else {
+                        barcosID[0] = null;
+                    }
+                }
+            }
+        });
+        
+        var encontradas = 0;
+        function validarCampo(id) {
+            console.log(id)
+
+
+            if (id == barcosID) {
+                encontradas = encontradas + 1;
+                cambiarImagenTachada(id)
+
+            } else {
+                cambiarImagenVacia
+            }
+
+            
+        }
+
+
+        function cambiarImagenTachada(id) {
+
+            var elemento = document.getElementById(id)
+
+            elemento.setAttribute("src", "https://img.freepik.com/fotos-premium/barco-siendo-destruido-bola-fuego_889227-25173.jpg?w=996")
+
+            if (encontradas == 5) {
+                var elemento = document.getElementById("ganar")
+                console.log(elemento)
+                elemento.style.display = "block";
+            }
+
+        }
+
+        function cambiarImagenVacia(id) {
+            var elemento = document.getElementById(id)
+            console.log(elemento);
+            elemento.setAttribute("src", "")
+        }
+    </script>
+</body>
+
+</html>

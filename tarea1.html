@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Classroom 2</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Arial";
+        }
+
+        header {
+            padding: 2px 1vw;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e6e4e4;
+            color: #616161;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo label {
+            margin-right: 10px;
+        }
+
+        .logo img {
+            margin-left: 5px;
+            margin-right: 8px;
+            width: 15%;
+        }
+
+        .menu-toggle {
+            font-size: 150%;
+        }
+
+        .todo {
+            display: flex;
+            width: 100%;
+            height: 90vh;
+            flex: 1;
+            max-height: 100%;
+            box-sizing: border-box;
+        }
+
+        .contenido {
+            display: flex;
+            width: 100%;
+            height: 100%;
+        }
+
+        .menu-container {
+            width: 18%;
+            overflow-y: auto;
+            box-sizing: border-box;
+            border-right: 1px solid #e6e4e4;
+        }
+
+        .clases-container {
+            width: 82%;
+            overflow-y: auto;
+            box-sizing: border-box;
+        }
+
+        .menu {
+            width: 100%;
+            margin: 2%;
+            font-size: 90%;
+        }
+
+        .seccion1 {
+            flex-direction: column;
+            margin: 1vw;
+            border-bottom: 2px solid #e6e4e4;
+
+        }
+
+        .inicio {
+            display: flex;
+            align-items: center;
+        }
+
+        .inicio:hover,
+        .calendario:hover,
+        .cursos:hover,
+        .cursos2:hover {
+            background-color: #d6d6d6;
+        }
+
+        .inicio img {
+            margin-left: 5px;
+            margin-right: 15px;
+            width: 10%;
+            height: 100%;
+        }
+
+        .calendario {
+            display: flex;
+            align-items: center;
+        }
+
+        .calendario img {
+            margin-left: 5px;
+            margin-right: 15px;
+            width: 10%;
+            height: 100%;
+        }
+
+        .seccion2 {
+            flex-direction: column;
+            margin: 1vw;
+        }
+
+        .cursos {
+            display: flex;
+            align-items: center;
+        }
+
+        .cursos img {
+            margin-left: 5px;
+            margin-right: 15px;
+            width: 10%;
+            height: 100%;
+        }
+
+        .cursos2 {
+            display: flex;
+            align-items: center;
+        }
+
+        .cursos2 img {
+            margin-left: 5px;
+            margin-right: 15px;
+            width: 10%;
+            height: 100%;
+        }
+
+        .clases {
+            display: flex;
+            width: 100%;
+            margin: 2%;
+            flex-wrap: wrap;
+        }
+
+        .clase {
+            width: 300px;
+            height: 250px;
+            border-radius: 5%;
+            border: 1px solid #b8b6b6;
+            padding: 0.75vw;
+            margin: .5%;
+        }
+
+        .clase:hover {
+            box-shadow: 4px 4px 4px black;
+        }
+
+        .encabezado {
+            border-bottom: 1px solid #e6e4e4;
+            height: 80px;
+            font-size: 15px;
+            line-height: .6;
+        }
+
+        .encabezado-container {
+            width: 100%;
+            height: 100px;
+            border-radius: 5%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .encabezado-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+        }
+
+        .fondo-imagen {
+            width: 300px;
+            height: 100px;
+            position: relative;
+            z-index: -1;
+        }
+
+        .cuerpo {
+            height: 80px;
+            border-bottom: 1px solid #e6e4e4;
+        }
+
+        .tarea {
+            line-height: 0;
+        }
+
+        .pie {
+            height: 50px;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .pie img {
+            margin: 5px;
+        }
+
+        .perfil {
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .perfil img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .enlaces {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .enlaces img {
+            margin-left: 5px;
+            margin-right: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <label for="menu-toggle" class="menu-toggle">&#9776;</label>
+            <img src="https://www.gstatic.com/classroom/logo_square_rounded.svg" style="width: 15%" alt="Logo" />
+            <h3 style="font-size: x-large">Classroom</h3>
+        </div>
+        <div class="enlaces">
+            <img src="https://cdn-icons-png.flaticon.com/128/1828/1828921.png" width="25px">
+            <img src="https://cdn-icons-png.flaticon.com/128/17/17704.png" width="25px">
+            <div class="perfil">
+                <img src="https://lh3.googleusercontent.com/ogw/ANLem4auZs2BOlU0hivPQZcBuPJApCkRFVHNXkM_utHapQ=s32-c-mo"
+                    alt="Perfil">
+            </div>
+        </div>
+    </header>
+
+    <div class="todo">
+        <div class="contenido">
+            <div class="menu-container">
+                <div class="menu">
+                    <div class="seccion1">
+                        <div class="inicio">
+                            <img src="https://cdn-icons-png.flaticon.com/128/1946/1946488.png" alt="Logo" />
+                            <h3>Inicio</h3>
+                        </div>
+                        <div class="calendario">
+                            <img src="https://cdn-icons-png.flaticon.com/128/747/747310.png" alt="Logo" />
+                            <h3>Calendario</h3>
+                        </div>
+                    </div>
+                    <div class="seccion2">
+                        <div class="cursos">
+                            <img src="https://cdn-icons-png.flaticon.com/128/686/686051.png" alt="Logo" />
+                            <h3>Cursos en los que te has inscrito</h3>
+                        </div>
+                        <div class="cursos2">
+                            <img src="https://cdn-icons-png.flaticon.com/128/3665/3665986.png" alt="Logo" />
+                            <h3>Introducción a la Programación</h3>
+                        </div>
+                        <div class="cursos2">
+                            <img src="https://cdn-icons-png.flaticon.com/128/3665/3665986.png" alt="Logo" />
+                            <h3>Bases de Datos para Sistemas</h3>
+                        </div>
+                        <div class="cursos2">
+                            <img src="https://cdn-icons-png.flaticon.com/128/3665/3665986.png" alt="Logo" />
+                            <h3>Desarrollo de Software Orientado a Objetos</h3>
+                        </div>
+                        <div class="cursos2">
+                            <img src="https://cdn-icons-png.flaticon.com/128/3665/3665986.png" alt="Logo" />
+                            <h3>Algoritmos y Estructuras de Datos</h3>
+                        </div>
+                        <div class="cursos2">
+                            <img src="https://cdn-icons-png.flaticon.com/128/3665/3665986.png" alt="Logo" />
+                            <h3>Redes de Computadoras</h3>
+                        </div>
+                        <div class="cursos2">
+                            <img src="https://cdn-icons-png.flaticon.com/128/3665/3665986.png" alt="Logo" />
+                            <h3>Ingeniería de Software</h3>
+                        </div>
+                        <div class="cursos2">
+                            <img src="https://cdn-icons-png.flaticon.com/128/3665/3665986.png" alt="Logo" />
+                            <h3>Sistemas Operativos</h3>
+                        </div>
+                        <div class="cursos2">
+                            <img src="https://cdn-icons-png.flaticon.com/128/3665/3665986.png" alt="Logo" />
+                            <h3>Seguridad Informática</h3>
+                        </div>
+                        <div class="cursos2">
+                            <img src="https://cdn-icons-png.flaticon.com/128/3665/3665986.png" alt="Logo" />
+                            <h3>Inteligencia Artificial y Machine Learning</h3>
+                        </div>
+                        <div class="cursos2">
+                            <img src="https://cdn-icons-png.flaticon.com/128/3665/3665986.png" alt="Logo" />
+                            <h3>Desarrollo Web Avanzado</h3>
+                        </div>
+                        <div class="cursos2">
+                            <img src="https://cdn-icons-png.flaticon.com/128/3665/3665986.png" alt="Logo" />
+                            <h3>Arquitectura de Computadoras</h3>
+                        </div>
+                        <div class="cursos2">
+                            <img src="https://cdn-icons-png.flaticon.com/128/3665/3665986.png" alt="Logo" />
+                            <h3>Ingeniería de Datos</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clases-container">
+                <div class="clases">
+                    <div class="clase">
+                        <div class="encabezado-container">
+                            <img class="fondo-imagen" src="https://www.gstatic.com/classroom/themes/Honors.jpg">
+                            <div class="encabezado">
+                                <h2>Tutorias 5C</h2>
+                                <h4><br></h4>
+                                <h4>Sebastian Sota</h4>
+                            </div>
+                        </div>
+                        <div class="cuerpo">
+                            <div class="tarea">
+                                <p>
+                                <h4>Fecha de entrega: miercoles </h4>
+                                <h5> 23:59 - Tarea 1</h5>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="pie">
+                            <img src="https://cdn-icons-png.flaticon.com/128/88/88591.png" alt="Logo"
+                                style="width: 30px" />
+                            <img src="https://cdn-icons-png.flaticon.com/128/2739/2739782.png" alt="Logo"
+                                style="width: 30px" />
+                        </div>
+                    </div>
+                    <div class="clase">
+                        <div class="encabezado-container">
+                            <img class="fondo-imagen"
+                                src="https://www.gstatic.com/classroom/themes/img_backtoschool.jpg">
+                            <div class="encabezado">
+                                <h2>Estructura de Datos</h2>
+                                <h4><br></h4>
+                                <h4>Antonio Luna</h4>
+                            </div>
+                        </div>
+                        <div class="cuerpo">
+                            <div class="tarea">
+                                <p>
+                                <h4>Fecha de entrega: miercoles </h4>
+                                <h5> 23:59 - Tarea 1</h5>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="pie">
+                            <img src="https://cdn-icons-png.flaticon.com/128/88/88591.png" alt="Logo"
+                                style="width: 30px" />
+                            <img src="https://cdn-icons-png.flaticon.com/128/2739/2739782.png" alt="Logo"
+                                style="width: 30px" />
+                        </div>
+                    </div>
+                    <div class="clase">
+                        <div class="encabezado-container">
+                            <img class="fondo-imagen"
+                                src="https://www.gstatic.com/classroom/themes/img_learnlanguage.jpg">
+                            <div class="encabezado">
+                                <h2>Ingles III</h2>
+                                <h4><br></h4>
+                                <h4>Amalia Rojas</h4>
+                            </div>
+                        </div>
+                        <div class="cuerpo">
+                            <div class="tarea">
+                                <p>
+                                <h4>Fecha de entrega: miercoles </h4>
+                                <h5> 23:59 - Tarea 1</h5>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="pie">
+                            <img src="https://cdn-icons-png.flaticon.com/128/88/88591.png" alt="Logo"
+                                style="width: 30px" />
+                            <img src="https://cdn-icons-png.flaticon.com/128/2739/2739782.png" alt="Logo"
+                                style="width: 30px" />
+                        </div>
+                    </div>
+                    <div class="clase">
+                        <div class="encabezado-container">
+                            <img class="fondo-imagen" src="https://www.gstatic.com/classroom/themes/img_read.jpg">
+                            <div class="encabezado">
+                                <h2>Modelado de Software</h2>
+                                <h4><br></h4>
+                                <h4>Bernardo Huicochea</h4>
+                            </div>
+                        </div>
+                        <div class="cuerpo">
+                            <div class="tarea">
+                                <p>
+                                <h4>Fecha de entrega: miercoles </h4>
+                                <h5> 23:59 - Tarea 1</h5>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="pie">
+                            <img src="https://cdn-icons-png.flaticon.com/128/88/88591.png" alt="Logo"
+                                style="width: 30px" />
+                            <img src="https://cdn-icons-png.flaticon.com/128/2739/2739782.png" alt="Logo"
+                                style="width: 30px" />
+                        </div>
+                    </div>
+                    <div class="clase">
+                        <div class="encabezado-container">
+                            <img class="fondo-imagen" src="https://www.gstatic.com/classroom/themes/img_bookclub.jpg">
+                            <div class="encabezado">
+                                <h2>Integradora II</h2>
+                                <h4><br></h4>
+                                <h4>Bernardo Huicochea</h4>
+                            </div>
+                        </div>
+                        <div class="cuerpo">
+                            <div class="tarea">
+                                <p>
+                                <h4>Fecha de entrega: miercoles </h4>
+                                <h5> 23:59 - Tarea 1</h5>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="pie">
+                            <img src="https://cdn-icons-png.flaticon.com/128/88/88591.png" alt="Logo"
+                                style="width: 30px" />
+                            <img src="https://cdn-icons-png.flaticon.com/128/2739/2739782.png" alt="Logo"
+                                style="width: 30px" />
+                        </div>
+                    </div>
+                    <div class="clase">
+                        <div class="encabezado-container">
+                            <img class="fondo-imagen" src="https://www.gstatic.com/classroom/themes/img_read.jpg">
+                            <div class="encabezado">
+                                <h2>Sistemas Operativos</h2>
+                                <h4><br></h4>
+                                <h4>JUAN</h4>
+                            </div>
+                        </div>
+                        <div class="cuerpo">
+                            <div class="tarea">
+                                <p>
+                                <h4>Fecha de entrega: miercoles </h4>
+                                <h5> 23:59 - Tarea 1</h5>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="pie">
+                            <img src="https://cdn-icons-png.flaticon.com/128/88/88591.png" alt="Logo"
+                                style="width: 30px" />
+                            <img src="https://cdn-icons-png.flaticon.com/128/2739/2739782.png" alt="Logo"
+                                style="width: 30px" />
+                        </div>
+                    </div>
+                    <div class="clase">
+                        <div class="encabezado-container">
+                            <img class="fondo-imagen" src="https://www.gstatic.com/classroom/themes/Honors.jpg">
+                            <div class="encabezado">
+                                <h2>Tutorias 5C</h2>
+                                <h4><br></h4>
+                                <h4>Sebastian Sota</h4>
+                            </div>
+                        </div>
+                        <div class="cuerpo">
+                            <div class="tarea">
+                                <p>
+                                <h4>Fecha de entrega: miercoles </h4>
+                                <h5> 23:59 - Tarea 1</h5>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="pie">
+                            <img src="https://cdn-icons-png.flaticon.com/128/88/88591.png" alt="Logo"
+                                style="width: 30px" />
+                            <img src="https://cdn-icons-png.flaticon.com/128/2739/2739782.png" alt="Logo"
+                                style="width: 30px" />
+                        </div>
+                    </div>
+                    <div class="clase">
+                        <div class="encabezado-container">
+                            <img class="fondo-imagen"
+                                src="https://www.gstatic.com/classroom/themes/img_backtoschool.jpg">
+                            <div class="encabezado">
+                                <h2>Estructura de Datos</h2>
+                                <h4><br></h4>
+                                <h4>Antonio Luna</h4>
+                            </div>
+                        </div>
+                        <div class="cuerpo">
+                            <div class="tarea">
+                                <p>
+                                <h4>Fecha de entrega: miercoles </h4>
+                                <h5> 23:59 - Tarea 1</h5>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="pie">
+                            <img src="https://cdn-icons-png.flaticon.com/128/88/88591.png" alt="Logo"
+                                style="width: 30px" />
+                            <img src="https://cdn-icons-png.flaticon.com/128/2739/2739782.png" alt="Logo"
+                                style="width: 30px" />
+                        </div>
+                    </div>
+                    <div class="clase">
+                        <div class="encabezado-container">
+                            <img class="fondo-imagen"
+                                src="https://www.gstatic.com/classroom/themes/img_learnlanguage.jpg">
+                            <div class="encabezado">
+                                <h2>Ingles III</h2>
+                                <h4><br></h4>
+                                <h4>Amalia Rojas</h4>
+                            </div>
+                        </div>
+                        <div class="cuerpo">
+                            <div class="tarea">
+                                <p>
+                                <h4>Fecha de entrega: miercoles </h4>
+                                <h5> 23:59 - Tarea 1</h5>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="pie">
+                            <img src="https://cdn-icons-png.flaticon.com/128/88/88591.png" alt="Logo"
+                                style="width: 30px" />
+                            <img src="https://cdn-icons-png.flaticon.com/128/2739/2739782.png" alt="Logo"
+                                style="width: 30px" />
+                        </div>
+                    </div>
+                    <div class="clase">
+                        <div class="encabezado-container">
+                            <img class="fondo-imagen" src="https://www.gstatic.com/classroom/themes/img_read.jpg">
+                            <div class="encabezado">
+                                <h2>Modelado de Software</h2>
+                                <h4><br></h4>
+                                <h4>Bernardo Huicochea</h4>
+                            </div>
+                        </div>
+                        <div class="cuerpo">
+                            <div class="tarea">
+                                <p>
+                                <h4>Fecha de entrega: miercoles </h4>
+                                <h5> 23:59 - Tarea 1</h5>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="pie">
+                            <img src="https://cdn-icons-png.flaticon.com/128/88/88591.png" alt="Logo"
+                                style="width: 30px" />
+                            <img src="https://cdn-icons-png.flaticon.com/128/2739/2739782.png" alt="Logo"
+                                style="width: 30px" />
+                        </div>
+                    </div>
+                    <div class="clase">
+                        <div class="encabezado-container">
+                            <img class="fondo-imagen" src="https://www.gstatic.com/classroom/themes/img_bookclub.jpg">
+                            <div class="encabezado">
+                                <h2>Integradora II</h2>
+                                <h4><br></h4>
+                                <h4>Bernardo Huicochea</h4>
+                            </div>
+                        </div>
+                        <div class="cuerpo">
+                            <div class="tarea">
+                                <p>
+                                <h4>Fecha de entrega: miercoles </h4>
+                                <h5> 23:59 - Tarea 1</h5>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="pie">
+                            <img src="https://cdn-icons-png.flaticon.com/128/88/88591.png" alt="Logo"
+                                style="width: 30px" />
+                            <img src="https://cdn-icons-png.flaticon.com/128/2739/2739782.png" alt="Logo"
+                                style="width: 30px" />
+                        </div>
+                    </div>
+                    <div class="clase">
+                        <div class="encabezado-container">
+                            <img class="fondo-imagen" src="https://www.gstatic.com/classroom/themes/img_read.jpg">
+                            <div class="encabezado">
+                                <h2>Sistemas Operativos</h2>
+                                <h4><br></h4>
+                                <h4>JUAN</h4>
+                            </div>
+                        </div>
+                        <div class="cuerpo">
+                            <div class="tarea">
+                                <p>
+                                <h4>Fecha de entrega: miercoles </h4>
+                                <h5> 23:59 - Tarea 1</h5>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="pie">
+                            <img src="https://cdn-icons-png.flaticon.com/128/88/88591.png" alt="Logo"
+                                style="width: 30px" />
+                            <img src="https://cdn-icons-png.flaticon.com/128/2739/2739782.png" alt="Logo"
+                                style="width: 30px" />
+                        </div>
+                    </div>
+                    <div class="clase">
+                        <div class="encabezado-container">
+                            <img class="fondo-imagen" src="https://www.gstatic.com/classroom/themes/Honors.jpg">
+                            <div class="encabezado">
+                                <h2>Tutorias 5C</h2>
+                                <h4><br></h4>
+                                <h4>Sebastian Sota</h4>
+                            </div>
+                        </div>
+                        <div class="cuerpo">
+                            <div class="tarea">
+                                <p>
+                                <h4>Fecha de entrega: miercoles </h4>
+                                <h5> 23:59 - Tarea 1</h5>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="pie">
+                            <img src="https://cdn-icons-png.flaticon.com/128/88/88591.png" alt="Logo"
+                                style="width: 30px" />
+                            <img src="https://cdn-icons-png.flaticon.com/128/2739/2739782.png" alt="Logo"
+                                style="width: 30px" />
+                        </div>
+                    </div>
+                    <div class="clase">
+                        <div class="encabezado-container">
+                            <img class="fondo-imagen"
+                                src="https://www.gstatic.com/classroom/themes/img_backtoschool.jpg">
+                            <div class="encabezado">
+                                <h2>Estructura de Datos</h2>
+                                <h4><br></h4>
+                                <h4>Antonio Luna</h4>
+                            </div>
+                        </div>
+                        <div class="cuerpo">
+                            <div class="tarea">
+                                <p>
+                                <h4>Fecha de entrega: miercoles </h4>
+                                <h5> 23:59 - Tarea 1</h5>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="pie">
+                            <img src="https://cdn-icons-png.flaticon.com/128/88/88591.png" alt="Logo"
+                                style="width: 30px" />
+                            <img src="https://cdn-icons-png.flaticon.com/128/2739/2739782.png" alt="Logo"
+                                style="width: 30px" />
+                        </div>
+                    </div>
+                    <div class="clase">
+                        <div class="encabezado-container">
+                            <img class="fondo-imagen"
+                                src="https://www.gstatic.com/classroom/themes/img_learnlanguage.jpg">
+                            <div class="encabezado">
+                                <h2>Ingles III</h2>
+                                <h4><br></h4>
+                                <h4>Amalia Rojas</h4>
+                            </div>
+                        </div>
+                        <div class="cuerpo">
+                            <div class="tarea">
+                                <p>
+                                <h4>Fecha de entrega: miercoles </h4>
+                                <h5> 23:59 - Tarea 1</h5>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="pie">
+                            <img src="https://cdn-icons-png.flaticon.com/128/88/88591.png" alt="Logo"
+                                style="width: 30px" />
+                            <img src="https://cdn-icons-png.flaticon.com/128/2739/2739782.png" alt="Logo"
+                                style="width: 30px" />
+                        </div>
+                    </div>
+                    <div class="clase">
+                        <div class="encabezado-container">
+                            <img class="fondo-imagen" src="https://www.gstatic.com/classroom/themes/img_read.jpg">
+                            <div class="encabezado">
+                                <h2>Modelado de Software</h2>
+                                <h4><br></h4>
+                                <h4>Bernardo Huicochea</h4>
+                            </div>
+                        </div>
+                        <div class="cuerpo">
+                            <div class="tarea">
+                                <p>
+                                <h4>Fecha de entrega: miercoles </h4>
+                                <h5> 23:59 - Tarea 1</h5>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="pie">
+                            <img src="https://cdn-icons-png.flaticon.com/128/88/88591.png" alt="Logo"
+                                style="width: 30px" />
+                            <img src="https://cdn-icons-png.flaticon.com/128/2739/2739782.png" alt="Logo"
+                                style="width: 30px" />
+                        </div>
+                    </div>
+                    <div class="clase">
+                        <div class="encabezado-container">
+                            <img class="fondo-imagen" src="https://www.gstatic.com/classroom/themes/img_bookclub.jpg">
+                            <div class="encabezado">
+                                <h2>Integradora II</h2>
+                                <h4><br></h4>
+                                <h4>Bernardo Huicochea</h4>
+                            </div>
+                        </div>
+                        <div class="cuerpo">
+                            <div class="tarea">
+                                <p>
+                                <h4>Fecha de entrega: miercoles </h4>
+                                <h5> 23:59 - Tarea 1</h5>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="pie">
+                            <img src="https://cdn-icons-png.flaticon.com/128/88/88591.png" alt="Logo"
+                                style="width: 30px" />
+                            <img src="https://cdn-icons-png.flaticon.com/128/2739/2739782.png" alt="Logo"
+                                style="width: 30px" />
+                        </div>
+                    </div>
+                    <div class="clase">
+                        <div class="encabezado-container">
+                            <img class="fondo-imagen" src="https://www.gstatic.com/classroom/themes/img_read.jpg">
+                            <div class="encabezado">
+                                <h2>Sistemas Operativos</h2>
+                                <h4><br></h4>
+                                <h4>JUAN</h4>
+                            </div>
+                        </div>
+                        <div class="cuerpo">
+                            <div class="tarea">
+                                <p>
+                                <h4>Fecha de entrega: miercoles </h4>
+                                <h5> 23:59 - Tarea 1</h5>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="pie">
+                            <img src="https://cdn-icons-png.flaticon.com/128/88/88591.png" alt="Logo"
+                                style="width: 30px" />
+                            <img src="https://cdn-icons-png.flaticon.com/128/2739/2739782.png" alt="Logo"
+                                style="width: 30px" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
